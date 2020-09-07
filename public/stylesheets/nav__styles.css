@@ -1,0 +1,116 @@
+:root {
+    --logo_color: #FFFF7F;
+    --text_color: #D88A83;
+    --hover_color: #ffb515;
+    --nav__background: #394359;
+    --mainTransition:var(--mainTransition);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text_color);
+}
+
+.nav__container {
+    background-color: var(--nav__background);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.35rem 2rem;
+}
+
+.nav__container .nav__ul .nav__li {
+    display: inline-block;
+    margin: 0 0.5rem;
+    transition:var(--mainTransition);
+}
+
+.logo {
+    font-size: 1.5em;
+    color: var(--logo_color);
+    transition:var(--mainTransition);
+}
+
+.logo:hover {
+    cursor: pointer;
+    color: var(--hover_color);
+    opacity: .6;
+}
+
+.nav__container .nav__ul .nav__li a:hover {
+    opacity: 0.6;
+    color: #fff;
+    transition:var(--mainTransition);
+}
+
+
+.fa-bars {
+    display: none;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width:800px) {
+    .fa-bars {
+        display: inherit;
+        margin-right: 2rem;
+    }
+    .nav__container .nav__ul {
+        display: none;
+    }
+}
+/* Mobile First Nav Bar */
+.overlay {
+    height: 70%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    overflow-x: hidden;
+    background-color: var(--nav__background);
+    transition: all .4s ease .1s;
+}
+
+.overlay .overlay__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+span .fa-times {
+    position: absolute;
+    top: 70px;
+    right: 50px;
+    font-size: 1.5rem;
+}
+
+.overlay .overlay__content a {
+    padding: .8rem;
+    border-bottom: 1px solid rgba(255, 255, 127, .7);
+}
+.fa-times:hover{
+    opacity: .6;;
+    color: #fff;
+    cursor: pointer;
+
+}
+.overlay .overlay__content a:hover{
+    opacity: 0.6;
+    color: #fff;
+    transition:var(--mainTransition);
+}
+
+@media screen and (min-width:800px){
+    .overlay{
+        /* width:0; */
+        display: none;
+    }
+}
+
