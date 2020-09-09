@@ -8,10 +8,7 @@
     overflow-x: hidden;
 
 }
-:root{
-    --color:
 
-}
 body{
     background:linear-gradient(45deg, #da22ff, #9733ee);
 }
@@ -28,8 +25,9 @@ body{
     border:1px solid rgba(0, 0 , 0, .15);
     font-family: 'Oswald', sans-serif;
 }
-h1{
+#app__name{
     font-family: 'Sacramento', cursive;
+    font-size: 2.5rem;
 }
 main{
     width: 100%;
@@ -50,12 +48,12 @@ main .top__container{
 
 .top__container .imageBox{
     margin:1rem;
-    height: 200px;
+    
     width:200px;
 }
 .imageBox img{
     max-width: 100%;
-    max-height: 100%;
+    
    
 }
 
@@ -71,4 +69,29 @@ main .bottom__container{
     justify-content: space-around;
     align-items: center; 
 }
+main .bottom__container .read__more{
 
+    margin:1rem;
+}
+/* Making Responsive  */
+
+@media screen and (max-width:800px){
+
+    main .top__container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .top__container .imageBox{
+        width:70%;
+    }
+}
+
+@media screen and (max-width:700px){
+    main .bottom__container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
