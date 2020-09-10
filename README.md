@@ -5,4 +5,7 @@ Design Home page
 # task 2 
 1. Setup backend
 2. create new form & feed them to home page
-    
+
+# task 3
+1. Connect Blogsite to mongoose data base
+

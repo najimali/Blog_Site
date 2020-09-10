@@ -1,26 +1,23 @@
-const { urlencoded } = require('body-parser');
-
 const express = require('express'),
     app = express(),
-    bodyParser = require('body-parser');
-
-let blogList    =    [
-    {
-        image:"https://images.pexels.com/photos/2570063/pexels-photo-2570063.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-        description:"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam"
-    },
-    {
-        image:"https://images.pexels.com/photos/2570063/pexels-photo-2570063.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-        description:"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam"
-    },
-    {
-        image:"https://images.pexels.com/photos/2570063/pexels-photo-2570063.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-        description:"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam"
-    },
-];
+    bodyParser = require('body-parser'),
+    mongoose = require('mongoose'),
+    Blog = require("./models/Blog"),
+    seedDb = require("./seeds");
 
 
 
+//Mongoose Config
+const mongooseUrl = "mongodb://localhost:27017/myblog"
+// start the mongo server in another bash by ./mongod command
+//connecting mongoose 
+mongoose.connect(mongooseUrl, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+});
+// seedDb();
 
 //App config
 
@@ -34,11 +31,23 @@ app.get("/", (req, res) => {
     res.redirect("/index");
 });
 
+
+
+// =====================================================
+// ROUTE 
+// =====================================================
+
 // INDEX ROUTE 
 app.get("/index", (req, res) => {
+    Blog.find({}, (err, blogs) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("index", { blogs: blogs });
+        }
+    });
 
-    
-    res.render("index", { blogs: blogList });
+
 });
 // NEW ROUTE 
 app.get("/new", (req, res) => {
@@ -46,10 +55,19 @@ app.get("/new", (req, res) => {
 });
 
 app.post("/new", (req, res) => {
-    let newBlog = req.body.blog;
-    blogList.push(newBlog);
-    res.render("index",{ blogs: blogList });
-    // res.redirect('/index');
+    // console.log("NEW Blog");
+    // console.log(newBlog);
+    Blog.create(req.body.blog, (err, blog) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Blog Added.........");
+            //console.log(blog);
+            res.redirect('/index');
+        }
+    });
+
+
 });
 // Setting up port 
 app.listen(3000, () => {
