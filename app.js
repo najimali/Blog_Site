@@ -6,7 +6,6 @@ const express = require('express'),
     seedDb = require("./seeds");
 
 
-
 //Mongoose Config
 const mongooseUrl = "mongodb://localhost:27017/myblog"
 // start the mongo server in another bash by ./mongod command
@@ -28,9 +27,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get("/", (req, res) => {
-    res.redirect("/index");
+    res.redirect("/blog/index");
 });
 
+app.get("/blog", (req, res) => {
+    res.redirect("/blog/index");
+});
 
 
 // =====================================================
@@ -38,7 +40,7 @@ app.get("/", (req, res) => {
 // =====================================================
 
 // INDEX ROUTE 
-app.get("/index", (req, res) => {
+app.get("/blog/index", (req, res) => {
     Blog.find({}, (err, blogs) => {
         if (err) {
             console.log(err);
@@ -50,11 +52,11 @@ app.get("/index", (req, res) => {
 
 });
 // NEW ROUTE 
-app.get("/new", (req, res) => {
+app.get("/blog/new", (req, res) => {
     res.render("new");
 });
 
-app.post("/new", (req, res) => {
+app.post("/blog/new", (req, res) => {
     // console.log("NEW Blog");
     // console.log(newBlog);
     Blog.create(req.body.blog, (err, blog) => {
@@ -63,7 +65,7 @@ app.post("/new", (req, res) => {
         } else {
             console.log("Blog Added.........");
             //console.log(blog);
-            res.redirect('/index');
+            res.redirect('/blog/index');
         }
     });
 

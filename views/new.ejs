@@ -1,8 +1,23 @@
-<h1>Form page</h1>
+<%-include("./partials/header");-%>
+<link rel="stylesheet" href="/stylesheets/index.css">
 
+<div class="wrapper">
+    <form class='ui form ' action="/blog/new" method="post">
+        <div class="field">
+            <label>Image link</label>
+            <input type="url" required name="blog[image]" id="image" placeholder="image url">
+        </div>
+        <div class="ui form">
+            <div class="field">
+                <grammarly-extension style=" position: absolute; top: 0px; left: 0px; pointer-events: none;"
+                    class="_1KJtL">
+                </grammarly-extension>
+                <label>Tell us more</label>
+                <textarea required name="blog[description]" spellcheck="false" id="" cols="30" rows="10"></textarea>
+            </div>
+        </div>
 
-<form action="/new" method="post">
-    <input type="text" name="blog[image]" id="" placeholder="image url">
-    <textarea name="blog[description]" id="" cols="30" rows="10"></textarea>
-    <button type="submit">Submit</button>
-</form>
+        <button style ="margin: 1rem 0;"class="ui primary button margin__top" type="submit">Submit</button>
+    </form>
+</div>
+<%-include("./partials/footer");-%>
