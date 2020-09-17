@@ -1,0 +1,25 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    outline: none;
+    border: none;
+    overflow-x: hidden;
+}
+
+.wrapper{
+    background-color: rgba(0, 0, 0, 0.04);
+}
+.grid {
+    width: 70%;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .75rem 1rem;
+    margin: .75rem 1rem;
+}

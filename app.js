@@ -71,6 +71,21 @@ app.post("/blog/new", (req, res) => {
 
 
 });
+
+// SHOW PAGE 
+app.get("/blog/:id", (req, res) => {
+    //Find the user by id
+    //then render the show page
+    Blog.findById(req.params.id, (err, blog) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("show",{blog:blog});
+
+        }
+    });
+
+});
 // Setting up port 
 app.listen(3000, () => {
     console.log("Blog Site Server started");

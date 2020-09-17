@@ -9,3 +9,7 @@
 ### Task 3
 1. Connect Blogsite to mongoose data base
 2. Style the New Page
+
+### Task 4
+1. Create Show Page
+2. Style the Show Page
