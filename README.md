@@ -1,18 +1,34 @@
+### [Watch the Demo](https://www.youtube.com/watch?v=tPStX5FIMgE)
+### Installation and Running the App
+Make sure `nodemon` is installed globally:
+
+1. > npm install -g nodemon
+
+2. Clone the repo
+
+`git clone https://github.com/najimali/Blog_Site`
+
+3. Install the packages [check here](https://github.com/najimali/Blog_Site/blob/master/package.json)
+
+4. `npm run dev`
+
+
 ### Task 1
 - Design Home page
-1. Desing Nav bar
-2. Design Main Container
+- [ ] Desing Nav bar
+- [ ] Design Main Container
 ### Task 2 
-1. Setup backend
-2. create new form & feed them to home page
+- [ ] Setup backend
+- [ ] create new form & feed them to home page
 
 ### Task 3
-1. Connect Blogsite to mongoose data base
-2. Style the New Page
+- [ ] Connect Blogsite to mongoose data base
+- [ ] Style the New Page
 
 ### Task 4
-1. Create Show Page
-2. Style the Show Page
+- [ ] Create Show Page
+- [ ] Style the Show Page
 
 ### Task 5
-1. Create Edit Page
+- [ ] Create Edit Page
+- [ ] Delete the Blog
