@@ -1,6 +1,5 @@
 const express = require('express'),
     app = express(),
-    cors = require('cors'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     Blog = require("./models/Blog"),
@@ -25,7 +24,6 @@ mongoose.connect(mongooseUrl, {
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
 app.use(methodOverride("_method"));
 
 
@@ -64,7 +62,7 @@ app.get("/blog/new", (req, res) => {
     res.render("new");
 });
 
-//NEW FORM
+//NEW FORM 
 app.post("/blog/new", (req, res) => {
     // console.log("NEW Blog");
     // console.log(newBlog);
@@ -81,12 +79,11 @@ app.post("/blog/new", (req, res) => {
 
 });
 
-// SHOW PAGE 
+// SHOW BLOG
 app.get("/blog/:id", (req, res) => {
-    const _id = req.params.id;
     //Find the user by id
     //then render the show page
-    Blog.findOne({ _id }, (err, blog) => {
+    Blog.findById(req.params.id, (err, blog) => {
         if (err) {
             res.status(400).json(err);
         }
@@ -100,7 +97,7 @@ app.get("/blog/:id", (req, res) => {
 });
 
 
-//EDIT PAGE
+//EDIT BLOG
 app.get("/blog/:id/edit", (req, res) => {
     //Find the post by edit & then show the values
     Blog.findById(req.params.id, (err, blog) => {
@@ -114,7 +111,7 @@ app.get("/blog/:id/edit", (req, res) => {
 
 });
 
-//UPDATE 
+//UPDATE BLOG 
 app.put("/blog/:id", (req, res) => {
 
     Blog.findByIdAndUpdate(req.params.id, req.body.blog, { new: true }, (err, updateBlog) => {
@@ -124,7 +121,21 @@ app.put("/blog/:id", (req, res) => {
         res.redirect(`/blog/${req.params.id}`);
     });
 });
+//DELETE BLOG
 
+app.delete("/blog/:id",(req,res)=>{
+
+    Blog.findByIdAndRemove(req.params.id,{new:true},(err,deletedBlog)=>{
+        if (err) {
+            res.status(400).json(err);
+        }
+        if (!deletedBlog) {
+            res.status(404).json({ message: 'Blog not found.' });
+        }
+        res.redirect("/blog");
+
+    })
+});
 // Setting up port 
 app.listen(3000, () => {
     console.log("Blog Site Server started");
