@@ -2,10 +2,11 @@
 <link rel="stylesheet" href="/stylesheets/index.css">
 
 <div class="wrapper">
-    <form class='ui form ' action="/blog/new" method="post">
+    <h1>Edit</h1>
+    <form class='ui form' action="/blog/<%=blog._id%>?_method=PUT" method="post">
         <div class="field">
             <label>Image link</label>
-            <input type="url" required name="blog[image]" id="image" placeholder="image url">
+            <input type="url" required name="blog[image]" id="image" value="<%=blog.image%>">
         </div>
         <div class="ui form">
             <div class="field">
@@ -13,7 +14,7 @@
                     class="_1KJtL">
                 </grammarly-extension>
                 <label>Tell us more</label>
-                <textarea required name="blog[description]" spellcheck="false" id="" cols="30" rows="10"></textarea>
+                <textarea required name="blog[description]" spellcheck="false" id="" cols="30" rows="10"><%=blog.description%></textarea>
             </div>
         </div>
 

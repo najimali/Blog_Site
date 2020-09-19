@@ -9,16 +9,14 @@
                 <img src="<%=blog.image%>" alt="">
             </div>
             <div class="content">
-
                 <p><%=blog.description.substring(0,200)%>...</p>
-
             </div>
         </div>
         <div class="bottom__container">
             <a class="read__more ui inverted red button" href="/blog/<%=blog._id%>">
                 Read More
             </a>
-            <p class=" ui red basic button">Submitted by Najim</p>
+            <p class="ui inverted orange button">Submitted by Najim</p>
         </div>
         <% }); %>
     </main>

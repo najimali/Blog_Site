@@ -3,7 +3,7 @@
     <div class="ui one column grid wrapper">
         <div class="row">
             <div class="column">
-                <h1>Blog Site</h1>
+                <h1>Show Page</h1>
             </div>
         </div>
         <div class="row">
@@ -17,7 +17,11 @@
                 <p><%=blog.description%></p>
             </div>
         </div>
+        <div class="row" style="justify-content: space-evenly;">
+        <a href ='/blog/<%=blog._id%>/edit'style ="margin: 1rem 0;"class="ui inverted green button " >Update</a>
+        <a style ="margin: 1rem 0;"class="ui inverted red button " >Delete</a>
 
+        </div>
     </div>
 
 <%-include("./partials/footer")-%>

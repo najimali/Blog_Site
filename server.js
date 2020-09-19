@@ -1,9 +1,11 @@
 const express = require('express'),
     app = express(),
+    cors = require('cors'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     Blog = require("./models/Blog"),
-    seedDb = require("./seeds");
+    seedDb = require("./seeds"),
+    methodOverride = require('method-override');
 
 
 //Mongoose Config
@@ -23,6 +25,8 @@ mongoose.connect(mongooseUrl, {
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.use(methodOverride("_method"));
 
 
 
@@ -42,11 +46,15 @@ app.get("/blog", (req, res) => {
 // INDEX ROUTE 
 app.get("/blog/index", (req, res) => {
     Blog.find({}, (err, blogs) => {
+
         if (err) {
-            console.log(err);
-        } else {
-            res.render("index", { blogs: blogs });
+            res.status(400).json(err);
         }
+        if (!blogs) {
+            res.status(404).json({ message: 'Blogs not found.' });
+        }
+        res.render("index", { blogs: blogs });
+        // res.json(blogs);
     });
 
 
@@ -56,6 +64,7 @@ app.get("/blog/new", (req, res) => {
     res.render("new");
 });
 
+//NEW FORM
 app.post("/blog/new", (req, res) => {
     // console.log("NEW Blog");
     // console.log(newBlog);
@@ -74,18 +83,48 @@ app.post("/blog/new", (req, res) => {
 
 // SHOW PAGE 
 app.get("/blog/:id", (req, res) => {
+    const _id = req.params.id;
     //Find the user by id
     //then render the show page
-    Blog.findById(req.params.id, (err, blog) => {
+    Blog.findOne({ _id }, (err, blog) => {
         if (err) {
-            console.log(err);
-        } else {
-            res.render("show",{blog:blog});
-
+            res.status(400).json(err);
         }
+        if (!blog) {
+            res.status(404).json({ message: 'Blog not found.' });
+        }
+        res.render("show", { blog: blog });
+        // res.json(blog);
     });
 
 });
+
+
+//EDIT PAGE
+app.get("/blog/:id/edit", (req, res) => {
+    //Find the post by edit & then show the values
+    Blog.findById(req.params.id, (err, blog) => {
+        if (err) {
+            res.status(400).json(err);
+        }
+        res.render("edit", { blog: blog });
+
+    });
+
+
+});
+
+//UPDATE 
+app.put("/blog/:id", (req, res) => {
+
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, { new: true }, (err, updateBlog) => {
+        if (err) {
+            res.status(400).json(err);
+        }
+        res.redirect(`/blog/${req.params.id}`);
+    });
+});
+
 // Setting up port 
 app.listen(3000, () => {
     console.log("Blog Site Server started");

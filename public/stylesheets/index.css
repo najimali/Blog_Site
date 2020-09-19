@@ -1,97 +1,94 @@
-*{
-    padding:0;
-    margin:0;
+* {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
-    list-style:none;
+    list-style: none;
     outline: none;
-    border:none;
+    border: none;
     overflow-x: hidden;
-
 }
 
-body{
-    background:linear-gradient(45deg, #da22ff, #9733ee);
+body {
+    background: linear-gradient(45deg, #da22ff, #9733ee);
 }
-.wrapper{
-    background:#fff;
-    width:80%;
+
+.wrapper {
+    background: #fff;
+    width: 80%;
     height: 100%;
-    padding:.75rem 1.25rem;
+    padding: .75rem 1.25rem;
     margin: 1rem auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border:1px solid rgba(0, 0 , 0, .15);
+    border: 1px solid rgba(0, 0, 0, .15);
     font-family: 'Oswald', sans-serif;
 }
-#app__name{
+
+#app__name {
     font-family: 'Sacramento', cursive;
     font-size: 2.5rem;
 }
-main{
+
+main {
     width: 100%;
-    border:1px solid rgba(0, 0 , 0, .15);
-    padding:1rem .8rem;
-    margin:1rem 1.75rem;
+    border: 1px solid rgba(0, 0, 0, .15);
+    padding: 1rem .8rem;
+    margin: 1rem 1.75rem;
 }
-main .top__container{
-   
-    padding:1rem;
+
+main .top__container {
+    padding: 1rem;
     /* border:1px solid rgba(0, 0 , 0, 1); */
-    display:flex;
+    display: flex;
     justify-content: space-around;
-    align-items: center; 
-
-
+    align-items: center;
 }
 
-.top__container .imageBox{
-    margin:1rem;
-    
-    width:200px;
+.top__container .imageBox {
+    margin: 1rem;
+    width: 200px;
 }
-.imageBox img{
+
+.imageBox img {
     max-width: 100%;
-    
-   
 }
 
-.top__container .content{
+.top__container .content {
     width: 70%;
-    padding:0;
+    padding: 0;
     text-align: start;
 }
-main .bottom__container{
-   
-    padding:1rem;
-    display:flex;
-    justify-content: space-around;
-    align-items: center; 
-}
-main .bottom__container .read__more{
 
-    margin:1rem;
+main .bottom__container {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
+
+main .bottom__container .read__more {
+    margin: 1rem;
+}
+
 /* Making Responsive  */
 
-@media screen and (max-width:800px){
-
-    main .top__container{
+@media screen and (max-width:800px) {
+    main .top__container {
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    .top__container .imageBox{
-        width:70%;
+    .top__container .imageBox {
+        width: 70%;
     }
 }
 
-@media screen and (max-width:700px){
-    main .bottom__container{
+@media screen and (max-width:700px) {
+    main .bottom__container {
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-
 }
