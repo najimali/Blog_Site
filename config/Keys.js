@@ -1,8 +1,8 @@
 require("dotenv").config();
 module.exports = {
   mongoDB: {
-    username: "najim-ali",
+    username: process.env.USER_NAME,
     password: process.env.PASSWORD,
-    dbname: "blog_site",
+    dbname: process.env.DB_NAME,
   },
 };
