@@ -12,11 +12,11 @@ router.get("/index", (req, res) => {
   Blog.find({}, (err, blogs) => {
     if (err) {
       res.status(400).json(err);
-    }
-    if (!blogs) {
+    } else if (!blogs) {
       res.status(404).json({ message: "Blogs not found." });
+    } else {
+      res.render("index", { blogs: blogs });
     }
-    res.render("index", { blogs: blogs });
     // res.json(blogs);
   });
 });

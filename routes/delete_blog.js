@@ -8,11 +8,11 @@ router.delete("/:id", (req, res) => {
   Blog.findByIdAndRemove(req.params.id, { new: true }, (err, deletedBlog) => {
     if (err) {
       res.status(400).json(err);
-    }
-    if (!deletedBlog) {
+    } else if (!deletedBlog) {
       res.status(404).json({ message: "Blog not found." });
+    } else {
+      res.redirect("/");
     }
-    res.redirect("/");
   });
 });
 module.exports = router;

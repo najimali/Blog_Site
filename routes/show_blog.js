@@ -10,11 +10,11 @@ router.get("/:id", (req, res) => {
   Blog.findById(req.params.id, (err, blog) => {
     if (err) {
       res.status(400).json(err);
-    }
-    if (!blog) {
+    } else if (!blog) {
       res.status(404).json({ message: "Blog not found." });
+    } else {
+      res.render("show", { blog: blog });
     }
-    res.render("show", { blog: blog });
     // res.json(blog);
   });
 });

@@ -56,7 +56,7 @@ app.use(require("./routes/delete_blog"));
 
 // Setting up port
 
-const hostname = "0.0.0.0",
+const hostname = "localhost",
   port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Blog Site Server running at http://${hostname}:${port}/`);

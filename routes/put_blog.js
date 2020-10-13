@@ -22,8 +22,7 @@ router.put("/:id", (req, res) => {
     (err, updateBlog) => {
       if (err) {
         res.status(400).json(err);
-      }
-      res.redirect(`/${req.params.id}`);
+      } else res.redirect(`/${req.params.id}`);
     }
   );
 });
