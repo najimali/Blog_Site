@@ -7,6 +7,8 @@ const express = require("express"),
   Keys = require("./config/Keys"),
   envSetup = require("dotenv").config();
 
+console.log(Keys.mongoDB.username);
+console.log(Keys.mongoDB.password);
 //Mongoose Config
 // start the mongo server in another bash by ./mongod command
 async function main() {
