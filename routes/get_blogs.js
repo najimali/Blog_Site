@@ -4,15 +4,11 @@ const express = require("express"),
   mongoose = require("mongoose");
 
 router.get("/", (req, res) => {
-  res.redirect("/blog/index");
-});
-
-router.get("/blog", (req, res) => {
-  res.redirect("/blog/index");
+  res.redirect("/index");
 });
 
 // INDEX ROUTE
-router.get("/blog/index", (req, res) => {
+router.get("/index", (req, res) => {
   Blog.find({}, (err, blogs) => {
     if (err) {
       res.status(400).json(err);

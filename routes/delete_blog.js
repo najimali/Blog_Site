@@ -4,7 +4,7 @@ const express = require("express"),
   mongoose = require("mongoose");
 //DELETE BLOG
 
-router.delete("/blog/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
   Blog.findByIdAndRemove(req.params.id, { new: true }, (err, deletedBlog) => {
     if (err) {
       res.status(400).json(err);
@@ -12,7 +12,7 @@ router.delete("/blog/:id", (req, res) => {
     if (!deletedBlog) {
       res.status(404).json({ message: "Blog not found." });
     }
-    res.redirect("/blog");
+    res.redirect("/");
   });
 });
 module.exports = router;

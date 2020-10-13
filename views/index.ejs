@@ -1,25 +1,24 @@
 <%-include("./partials/header")-%>
-<link rel="stylesheet" href="/stylesheets/index.css">
+<link rel="stylesheet" href="/stylesheets/index.css" />
 <div class="wrapper">
-    <h1 id="app__name">Blog Site</h1>
-    <main>
-        <% blogs.forEach(blog => { %>
-        <div class="top__container">
-            <div class="imageBox">
-                <img src="<%=blog.image%>" alt="">
-            </div>
-            <div class="content">
-                <p><%=blog.description.substring(0,200)%>...</p>
-            </div>
-        </div>
-        <div class="bottom__container">
-            <a class="read__more ui inverted red button" href="/blog/<%=blog._id%>">
-                Read More
-            </a>
-            <p class="ui inverted orange button">Submitted by Najim</p>
-        </div>
-        <% }); %>
-    </main>
-
+  <h1 id="app__name">Blog Site</h1>
+  <main>
+    <% blogs.forEach(blog => { %>
+    <div class="top__container">
+      <div class="imageBox">
+        <img src="<%=blog.image%>" alt="" />
+      </div>
+      <div class="content">
+        <p><%=blog.description.substring(0,200)%>...</p>
+      </div>
+    </div>
+    <div class="bottom__container">
+      <a class="read__more ui inverted red button" href="/<%=blog._id%>">
+        Read More
+      </a>
+      <p class="ui inverted orange button">Submitted by Najim</p>
+    </div>
+    <% }); %>
+  </main>
 </div>
 <%-include("./partials/footer")-%>
